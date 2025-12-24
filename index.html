@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="每日蝦皮優惠碼整理，一鍵複製並前往蝦皮使用">
+  <title id="page-title">優惠碼｜阿丹快省站</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav__link nav__link--active">📋 今日優惠碼</a>
+    <a href="links.html" class="nav__link">🔗 常用連結</a>
+  </nav>
+
+  <!-- Compact Header -->
+  <header class="header header--compact">
+    <div class="header__row">
+      <div class="header__brand">
+        <span class="header__logo">$</span>
+        <div>
+          <h1 class="header__title" id="header-title">12/25 優惠碼</h1>
+          <p class="header__subtitle">點擊複製 + 跳轉蝦皮</p>
+        </div>
+      </div>
+      <!-- Inline Toggle -->
+      <div class="header__toggle">
+        <span class="header__toggle-label">跳轉</span>
+        <label class="toggle-switch toggle-switch--small">
+          <input type="checkbox" id="redirect-toggle" checked>
+          <span class="toggle-switch__slider"></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container container--compact">
+    <div class="coupon-grid coupon-grid--compact" id="coupon-grid">
+      <!-- Coupons will be rendered by JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="empty-state__icon">🎫</div>
+      <p class="empty-state__text">今日暫無優惠碼</p>
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">✅ 已複製</div>
+
+  <!-- Footer -->
+  <footer class="footer footer--compact">
+    <p class="footer__text">阿丹快省站 © 2026</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      setPageDate();
+      renderCoupons();
+      initToggle();
+    });
+  </script>
+</body>
+
+</html>

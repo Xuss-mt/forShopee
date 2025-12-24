@@ -1,0 +1,827 @@
+/* ===================================
+   阿丹快省站 - 樣式表 v2
+   紫羅蘭科技風 / 玻璃擬態設計
+   =================================== */
+
+/* CSS 變數 - 色彩系統 */
+:root {
+  /* 主色調 - 紫羅蘭+青色 */
+  --color-primary: #8B5CF6;
+  --color-primary-hover: #7C3AED;
+  --color-secondary: #06B6D4;
+  --color-accent: #22D3EE;
+
+  /* 背景色 */
+  --color-bg: #0c0a1d;
+  --color-bg-secondary: #1a1630;
+  --color-card: rgba(30, 27, 52, 0.8);
+  --color-glass: rgba(139, 92, 246, 0.08);
+
+  /* 文字色 */
+  --color-text: #f0f0f5;
+  --color-text-secondary: #a8a3be;
+  --color-text-muted: #706b85;
+
+  /* 邊框 */
+  --color-border: rgba(139, 92, 246, 0.2);
+  --color-border-hover: rgba(139, 92, 246, 0.4);
+
+  /* 狀態色 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+
+  /* 圓角 */
+  --radius-card: 20px;
+  --radius-button: 14px;
+  --radius-tag: 24px;
+
+  /* 間距 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* 陰影 */
+  --shadow-card: 0 8px 32px rgba(139, 92, 246, 0.15);
+  --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(6, 182, 212, 0.1), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 100%, rgba(139, 92, 246, 0.08), transparent),
+    var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===================================
+   Layout
+   =================================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* ===================================
+   Header
+   =================================== */
+.header {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+}
+
+.header__logo {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--shadow-glow);
+}
+
+.header__title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-text), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-xs);
+}
+
+.header__subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   Settings Panel (跳轉開關)
+   =================================== */
+.settings-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.settings-panel__label {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.settings-panel__label .icon {
+  font-size: 1.1rem;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch__slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--color-text-muted);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.toggle-switch input:checked+.toggle-switch__slider {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-color: transparent;
+}
+
+.toggle-switch input:checked+.toggle-switch__slider::before {
+  transform: translateX(24px);
+  background: white;
+}
+
+.settings-panel__status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-tag);
+  transition: all 0.3s ease;
+}
+
+.settings-panel__status--on {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+}
+
+.settings-panel__status--off {
+  background: rgba(168, 163, 190, 0.15);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   Navigation
+   =================================== */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--color-glass);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav__link {
+  padding: var(--spacing-xs) var(--spacing-md);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-button);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav__link:hover {
+  color: var(--color-text);
+  background: var(--color-bg-secondary);
+  border-color: var(--color-border);
+}
+
+.nav__link--active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-color: transparent;
+}
+
+/* ===================================
+   Coupon Grid
+   =================================== */
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+}
+
+/* ===================================
+   Coupon Card - Glassmorphism
+   =================================== */
+.coupon-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.coupon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.coupon-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.coupon-card:hover::before {
+  opacity: 1;
+}
+
+/* Tags */
+.coupon-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-tag);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.tag--type {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+  color: var(--color-accent);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.tag--quantity {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.tag--unlimited {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+}
+
+/* Info Section */
+.coupon-card__info {
+  margin-bottom: var(--spacing-lg);
+}
+
+.coupon-card__type {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.coupon-card__deal {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.coupon-card__deal .threshold {
+  color: var(--color-text-secondary);
+}
+
+.coupon-card__deal .discount {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button */
+.coupon-card__button {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.coupon-card__button:hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+}
+
+.coupon-card__button:active {
+  transform: scale(0.98);
+}
+
+.coupon-card__button .code {
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  letter-spacing: 0.12em;
+  font-size: 1.05rem;
+}
+
+.coupon-card__button .hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.coupon-card__button:hover .hint {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================
+   Link Card (for links.html)
+   =================================== */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) 0;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-lg);
+  text-decoration: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.25s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.link-card__icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.link-card__content {
+  flex: 1;
+}
+
+.link-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.link-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.link-card__arrow {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.link-card:hover .link-card__arrow {
+  transform: translateX(4px);
+  color: var(--color-accent);
+}
+
+/* ===================================
+   Toast Notification
+   =================================== */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-button);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-glow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast--success {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* ===================================
+   Empty State
+   =================================== */
+.empty-state {
+  text-align: center;
+  padding: calc(var(--spacing-xl) * 2);
+  color: var(--color-text-secondary);
+}
+
+.empty-state__icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-state__text {
+  font-size: 1.1rem;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+  text-align: center;
+  padding: var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-xl);
+}
+
+.footer__text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 1.6rem;
+  }
+
+  .coupon-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .settings-panel {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+
+  .header {
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-md);
+  }
+
+  .coupon-card {
+    padding: var(--spacing-md);
+  }
+
+  .coupon-card__deal {
+    font-size: 1.35rem;
+  }
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.coupon-card {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.coupon-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.coupon-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.coupon-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.coupon-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.coupon-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.coupon-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.link-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* ===================================
+   Compact Layout Styles
+   =================================== */
+
+/* Compact Header */
+.header--compact {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+}
+
+.header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: var(--spacing-md);
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.header--compact .header__logo {
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+.header--compact .header__title {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+
+.header--compact .header__subtitle {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Inline Toggle */
+.header__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 6px 12px;
+  background: var(--color-glass);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+}
+
+.header__toggle-label {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.toggle-switch--small {
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-switch--small .toggle-switch__slider::before {
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  bottom: 2px;
+}
+
+.toggle-switch--small input:checked+.toggle-switch__slider::before {
+  transform: translateX(18px);
+}
+
+/* Compact Container */
+.container--compact {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* Compact Coupon Grid - More columns, smaller gaps */
+.coupon-grid--compact {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+}
+
+/* Compact Coupon Card */
+.coupon-card--compact {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 14px;
+}
+
+.coupon-card--compact .coupon-card__tags {
+  margin-bottom: var(--spacing-xs);
+}
+
+.coupon-card--compact .tag {
+  padding: 3px 10px;
+  font-size: 0.7rem;
+}
+
+.coupon-card--compact .coupon-card__info {
+  margin-bottom: var(--spacing-sm);
+}
+
+.coupon-card--compact .coupon-card__type {
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
+
+.coupon-card--compact .coupon-card__deal {
+  font-size: 1.2rem;
+}
+
+.coupon-card--compact .coupon-card__button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 10px;
+}
+
+.coupon-card--compact .coupon-card__button .code {
+  font-size: 0.9rem;
+}
+
+.coupon-card--compact .coupon-card__button .hint {
+  font-size: 0.7rem;
+}
+
+/* Discount Badge */
+.coupon-card__discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* Compact Footer */
+.footer--compact {
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.footer--compact .footer__text {
+  font-size: 0.75rem;
+}
+
+/* Responsive for compact */
+@media (max-width: 768px) {
+  .header__row {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .header__toggle {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .coupon-grid--compact {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .coupon-grid--compact {
+    grid-template-columns: 1fr;
+  }
+}
