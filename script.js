@@ -9,66 +9,13 @@
 let globalRedirectEnabled = true;
 
 // ===================================
-// 模擬資料（之後由 n8n 動態生成）
+// 優惠碼資料
+// 由 coupon-data.js 提供 (n8n 自動更新)
+// 若未載入則使用空陣列
 // ===================================
-const COUPON_DATA = [
-    {
-        code: "GU2BP87D9H",
-        threshold: 100,
-        discount: 20,
-        type: "全站券",
-        quantity: "有限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "MALL299M30",
-        threshold: 299,
-        discount: 30,
-        type: "商城券",
-        quantity: "有限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "FREESHIP50",
-        threshold: 0,
-        discount: 50,
-        type: "免運券",
-        quantity: "無限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "LIVE100M15",
-        threshold: 100,
-        discount: 15,
-        type: "直播券",
-        quantity: "有限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "XMAS500M80",
-        threshold: 500,
-        discount: 80,
-        type: "全站券",
-        quantity: "有限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "MALL199M25",
-        threshold: 199,
-        discount: 25,
-        type: "商城券",
-        quantity: "無限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    },
-    {
-        code: "SUPER1000M80",
-        threshold: 1000,
-        discount: 80,
-        type: "全站券",
-        quantity: "有限",
-        link: "https://shopee.tw/user/voucher-wallet"
-    }
-];
+if (typeof COUPON_DATA === 'undefined') {
+    var COUPON_DATA = [];
+}
 
 // ===================================
 // DOM Elements
