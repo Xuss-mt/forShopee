@@ -1,6 +1,6 @@
 /**
- * 阿丹快省站 - 互動邏輯 v3
- * 功能：複製優惠碼 + 跳轉蝦皮 + 折扣比例排序 + 緊湊佈局
+ * 阿丹快省站 - 互動邏輯 v4
+ * 功能：複製優惠碼 + 跳轉蝦皮 + 折扣比例排序 + 緊湊佈局 + 更新時間顯示
  */
 
 // ===================================
@@ -10,11 +10,14 @@ let globalRedirectEnabled = true;
 
 // ===================================
 // 優惠碼資料
-// 由 coupon-data.js 提供 (n8n 自動更新)
+// 由 coupon-data.js 提供 (OpenClaw 自動更新)
 // 若未載入則使用空陣列
 // ===================================
 if (typeof COUPON_DATA === 'undefined') {
     var COUPON_DATA = [];
+}
+if (typeof COUPON_UPDATED_AT === 'undefined') {
+    var COUPON_UPDATED_AT = null;
 }
 
 // ===================================
@@ -70,13 +73,19 @@ function initToggle() {
 }
 
 // ===================================
-// 設定頁面日期
+// 設定頁面日期（含更新時間）
 // ===================================
 function setPageDate() {
     const now = new Date();
     const month = now.getMonth() + 1;
     const day = now.getDate();
     const dateStr = `${month}/${day}`;
+
+    // 更新時間字串
+    let updateTimeStr = '';
+    if (COUPON_UPDATED_AT) {
+        updateTimeStr = ` (${COUPON_UPDATED_AT} 更新)`;
+    }
 
     const pageTitle = document.getElementById('page-title');
     if (pageTitle) {
@@ -85,7 +94,7 @@ function setPageDate() {
 
     const headerTitle = document.getElementById('header-title');
     if (headerTitle) {
-        headerTitle.textContent = `${dateStr} 優惠碼`;
+        headerTitle.innerHTML = `${dateStr} 優惠碼<span class="update-time">${updateTimeStr}</span>`;
     }
 }
 
