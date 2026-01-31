@@ -3,7 +3,7 @@
  * 此檔案由 OpenClaw 自動更新
  */
 
-var COUPON_UPDATED_AT = "2026-01-31 18:07";
+var COUPON_UPDATED_AT = "2026-02-01 02:14";
 
 var COUPON_DATA = [
     {
