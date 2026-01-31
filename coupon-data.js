@@ -1,8 +1,9 @@
 /**
  * 阿丹快省站 - 優惠碼資料
  * 此檔案由 OpenClaw 自動更新
- * 更新時間：2026-02-02
  */
+
+var COUPON_UPDATED_AT = "2026-01-31 18:07";
 
 var COUPON_DATA = [
     {
