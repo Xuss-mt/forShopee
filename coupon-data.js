@@ -1,9 +1,9 @@
 /**
  * 優惠碼資料 - OpenClaw 自動更新
- * 更新時間: 2026-02-01
+ * 更新時間: 2026-02-02 (台北時間)
  */
 
-var COUPON_UPDATED_AT = "2/1 17:45";
+var COUPON_UPDATED_AT = "2/2 01:52";
 
 var COUPON_DATA = [
   // 🔷 全站 100-20
