@@ -1,25 +1,35 @@
-/**
- * 阿丹快省站 - 優惠碼資料
- * 此檔案由 OpenClaw 自動更新
- */
-
-var COUPON_UPDATED_AT = "2026-02-01 02:14";
-
-var COUPON_DATA = [
+const couponData = {
+  lastUpdated: "2026-02-01",
+  eventTitle: "⭐️ 2/2 購物節折扣碼整理",
+  coupons: [
     {
-        "code": "FEBSHV02",
-        "threshold": 100,
-        "discount": 20,
-        "type": "全站券",
-        "quantity": "有限",
-        "link": "https://shopee.tw/user/voucher-wallet"
+      category: "🔷 全站 100-20",
+      codes: [
+        { code: "FEBSHV02", note: "" },
+        { code: "22CAMPOB", note: "" }
+      ]
     },
     {
-        "code": "22CAMPOB",
-        "threshold": 100,
-        "discount": 20,
-        "type": "全站券",
-        "quantity": "限指定用戶",
-        "link": "https://shopee.tw/user/voucher-wallet"
+      category: "🔷 全站 299-30",
+      codes: [
+        { code: "SVSP2602", note: "7-11" },
+        { code: "FMSP2602", note: "全家" }
+      ]
+    },
+    {
+      category: "🔷 全站 688-66",
+      codes: [
+        { code: "22AFF", note: "" },
+        { code: "22KOL", note: "" }
+      ]
+    },
+    {
+      category: "🔷 商城 299-30",
+      codes: [
+        { code: "SVAP2602", note: "7-11" },
+        { code: "FMAPP2602", note: "全家" },
+        { code: "HLAPP2602", note: "萊爾富" }
+      ]
     }
-];
+  ]
+};
